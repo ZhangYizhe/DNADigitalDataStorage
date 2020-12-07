@@ -22,7 +22,7 @@
 
 > Mapping of bit-tupels to nucleotides
 
-![Mapping of bit-tupels to nucleotides](Reference/Experiment of Forward Error Correction for DNA Data Storage/BitToBases.png)
+![Mapping of bit-tupels to nucleotides](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/BitToBases.png)
 
 In order to limit the maximum run-length of identical nucleotides to 3 for any possible combinations of DNA symbols, we defined the following constraints resulting in valid DNA symbols:
 
@@ -31,5 +31,5 @@ In order to limit the maximum run-length of identical nucleotides to 3 for any p
 
 > Insertion and deletion detection based on the use of alternating clusters for the DNA symbols
 
-![Insertion and deletion detection based on the use of alternating clusters for the DNA symbols](Reference/Experiment of Forward Error Correction for DNA Data Storage/InsertionAndDeletionError.png)
+![Insertion and deletion detection based on the use of alternating clusters for the DNA symbols](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/InsertionAndDeletionError.png)
 
