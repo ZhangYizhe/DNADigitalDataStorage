@@ -11,6 +11,7 @@
 1. [About the technology of storage](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/About.md)
 
 2. [Encoding and decoding method prospect](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/EncodingAndDecodingMethodProspect.md)
+3. [Experiment of Forward Error Correction for DNA Data Storage](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage.md)
 
 
 
