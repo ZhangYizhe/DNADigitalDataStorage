@@ -1,5 +1,13 @@
 # Encoding and decoding method prospect
 
+For now, reseachers main directions are
+
+1. How to decrease cost of reading and writing.
+2. How to utilise a mathematic scheme to decrease error.
+3. How to use a way to save data as a SQL method.
+
+
+
 1. A two-to-one correspondence where a binary zero was represented by either an adenine or cytosine and a binary one was represented by a guanine or thymine. 
 
 2. A simple code where bits were mapped one-to-one with bases, which had the shortcoming that it led to long runs of the same base, the sequencing of which is error-prone.
