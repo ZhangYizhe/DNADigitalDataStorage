@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Experiment of Forward Error Correction for DNA Data Storage</title>
+
+    <link rel="stylesheet" href="./index/css/index.css">
+    <script src="./index/js/DNAConvertArithmetic.js"></script>
+    <script src="./index/js/index.js"></script>
 </head>
-
 <body>
-
 
     <div class="title">Experiment of Forward Error Correction for DNA Data Storage</div>
     <br>
-    <div class="normal_input"><textarea id = "inputText" type="text"
-            placeholder="Please input what string you want to convert"></textarea></div>
+    <div class="normal_input"><textarea id = "inputText" type="text" placeholder="Please input what string you want to convert"></textarea></div>
     <br>
     <div class="convert_btn">
         <button class="button_base" onclick="convertBtnTap(0)" style="background-color: rgb(56, 173, 56);"><span>Convert To DNA Base</span></button>
@@ -21,6 +21,8 @@
     </div>
     <br>
     <div class="normal_input"><textarea id = "outputText" type="text" placeholder="Result"></textarea></div>
+    <br>
+    <div  class="description"><span>First, we convert content from decimalism to binary. Then binary content will be splited to two elements into a set. The First, Second, and Three set is separately converted from binary to first, second, and fourth position of DNA sequence. The last one will be converted two elements of base. Separately set the third and fifth position of DNA sequence.</span></div>
     <br>
     <div class="title">Lists 256 characters to nucleotides.</div>
     <br>
@@ -32,311 +34,6 @@
 
 <script>
 
-    function textToBin(string) {
-        return (
-            Array
-                .from(string)
-                .reduce((acc, char) => acc.concat(char.charCodeAt().toString(2)), [])
-                .map(bin => '0'.repeat(8 - bin.length) + bin)
-                .join(' ')
-        );
-    }
-
-    function binToText(string) {
-        let outputStr = string.split(' ') //Split string in array of binary chars
-            .map(bin => String.fromCharCode(parseInt(bin, 2))) //Map every binary char to real char
-            .join(''); //Join the array back to a string
-        return outputStr;
-    }
-
-    // BinaryToDNA
-    function binaryToDNA(string) {
-        let outputStr = string.split(' ')
-            .map(binarySingleToDNA)
-            .join(' '); //Join the array back to a string
-        return outputStr;
-    }
-
-    function binarySingleToDNA(string) {
-        let array = string.split('');
-        if (array.length < 8) {
-            return "error";
-        }
-
-        var outputStr = "";
-        var lastTwoBit = lastTwoBitsToNucleotidesShall(array[6] + array[7]);
-
-        outputStr += firstThreeBitsToNucleotidesShall(array[0] + array[1]);
-        outputStr += firstThreeBitsToNucleotidesShall(array[2] + array[3]);
-        outputStr += lastTwoBit.split('')[0]; // 7th and 8th bit covert to nucleotides seek first character of result
-        outputStr += firstThreeBitsToNucleotidesShall(array[4] + array[5]);
-        outputStr += lastTwoBit.split('')[1]; // 7th and 8th bit covert to nucleotides seek second character of result
-
-        if (outputStr.split('')[3] == outputStr.split('')[4]) {
-            return binarySingleToDNA(string)
-        }
-
-        if (outputStr.split('')[0] == outputStr.split('')[1] == outputStr.split('')[2]) {
-            return binarySingleToDNA(string)
-        }
-
-        return outputStr
-    }
-
-    // StringToDNA
-    function StringToDNA(string) {
-        let bin = textToBin("" + string + "");
-        return binaryToDNA(bin);
-    }
-
-    // DNAToString
-    function DNAToString(string) {
-        var outputStr = "";
-        let dnaBaseArr = string.split(' ');
-        
-        for (let i = 0; i < dnaBaseArr.length; i++) {
-            let dnaBase = dnaBaseArr[i].split('');
-            if (dnaBase.length < 5) {
-                outputStr += " --------";
-            }
-
-            outputStr += " " + nucleotidesShallToFirstThreeBits(dnaBase[0]);
-            outputStr += "" + nucleotidesShallToFirstThreeBits(dnaBase[1]);
-            outputStr += "" + nucleotidesShallToFirstThreeBits(dnaBase[3]);
-            outputStr += "" + nucleotidesShallToLastTwoBits(dnaBase[2] + dnaBase[4]);
-        }
-
-        return binToText(outputStr);
-    }
-
-    function firstThreeBitsToNucleotidesShall(string) {
-        switch (string) {
-            case "00":
-                return "A";
-            case "01":
-                return "C";
-            case "10":
-                return "G";
-            case "11":
-                return "T";
-        }
-        return "E";
-    }
-
-    function nucleotidesShallToFirstThreeBits(string) {
-        switch (string) {
-            case "A":
-                return "00";
-            case "C":
-                return "01";
-            case "G":
-                return "10";
-            case "T":
-                return "11";
-        }
-        return "--";
-    }
-
-    var nucleotidesSortArr = [
-        "AA", "CC", "GG", "TT",
-        "AC", "CG", "GT", "TA",
-        "AG", "CT", "GA", "TC",
-        "AT", "CA", "GC", "TG"]
-    function lastTwoBitsToNucleotidesShall(string) {
-        switch (string) {
-            case "00":
-                return nucleotidesSortArr[randomNum(0, 3)];
-            case "01":
-                return nucleotidesSortArr[randomNum(4, 7)];
-            case "10":
-                return nucleotidesSortArr[randomNum(8, 11)];
-            case "11":
-                return nucleotidesSortArr[randomNum(12, 15)];
-        }
-        return "EE";
-    }
-
-    function nucleotidesShallToLastTwoBits(string) {
-        switch (string) {
-            case "AA": case "CC": case "GG": case "TT":
-                return "00";
-            case "AC": case "CG": case "GT": case "TA":
-                return "01";
-            case "AG": case "CT": case "GA": case "TC":
-                return "10";
-            case "AT": case "CA": case "GC": case "TG":
-                return "11";
-        }
-        return "EE";
-    }
-
-    //random from minNum to maxNum
-    function randomNum(minNum, maxNum) {
-        switch (arguments.length) {
-            case 1:
-                return parseInt(Math.random() * minNum + 1, 10);
-                break;
-            case 2:
-                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
-                break;
-            default:
-                return 0;
-                break;
-        }
-    }
-
-    // 0-256 decimalism to dna base
-    function numberToDecimalismTable() {
-        var result = "<tr>";
-        for (var i = 0; i < 256; i++) {
-            let bin = textToBin("" + i + "");
-            result += "<td>" + i + " " + bin + "<br><span class='dna_result_string'>" + binaryToDNA(bin) + "</span></td>";
-            if ((i + 1) % 4 == 0) {
-                result += "</tr><tr>"
-            }
-        }
-
-        result += "</tr>"
-
-        document.getElementById("numberToDecimalismTable").innerHTML = result;
-    }
-
-    // button convert
-    function convertBtnTap(type) {
-        let input = document.getElementById("inputText").value
-        if (input == "") {
-            return
-        }
-
-        var result = ""
-        if (type == 1) {
-            result = DNAToString(input);
-        } else {
-            result = StringToDNA(input);
-        }
-
-        document.getElementById("outputText").value = result;
-    }
-
-    numberToDecimalismTable()
 </script>
-
-<style>
-    body {
-        margin: 0 0;
-        font-family: 'Monaco';
-    }
-
-    .title {
-        margin: auto;
-        width: 1002px;
-        text-align: center;
-        position: relative;
-        top: 20px;
-    }
-
-    .normal_input {
-        margin: auto;
-        position: relative;
-        top: 20px;
-
-        width: 1002px;
-        height: 300px;
-        border-style: solid;
-        border-width: 1px;
-    }
-
-    .normal_input textarea {
-        width: 982px;
-        height: 280px;
-        text-align: start;
-        resize: none;
-        font-size: 16px;
-        border: none;
-        padding: 10px;
-    }
-
-    .convert_btn {
-        margin: auto;
-        position: relative;
-        top: 20px;
-        width: 350px;
-        height: 120px;
-    }
-
-    .button_base {
-        width: 100%;
-        height: 40%;
-        border: none;
-        position: relative;
-    }
-
-    #numberToDecimalismTable {
-        margin: auto;
-        position: relative;
-        top: 20px;
-        border-collapse: collapse;
-    }
-
-    #numberToDecimalismTable td {
-        border: 1px solid #e9e9e9;
-        padding: 8px;
-        font-size: 12px;
-    }
-
-    #numberToDecimalismTable tr:nth-child(odd) td {
-        color: #000000;
-        background-color: #e9e9e9;
-    }
-
-    .dna_result_string {
-        font-weight: bold;
-    }
-
-    .bottom {
-        height: 100px;
-        width: 100%;
-    }
-</style>
-
-<style>
-    .button_base {
-        display: inline-block;
-        border-radius: 4px;
-        background-color: #f4511e;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 20px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    .button_base span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-    }
-
-    .button_base span:after {
-        content: '»';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-    }
-
-    .button_base:hover span {
-        padding-right: 25px;
-    }
-
-    .button_base:hover span:after {
-        opacity: 1;
-        right: 0;
-    }
-</style>
 
 </html>
