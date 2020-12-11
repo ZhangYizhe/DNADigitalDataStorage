@@ -35,4 +35,3 @@ function convertBtnTap(type) {
 
     document.getElementById("outputText").value = result;
 }
-

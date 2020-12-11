@@ -5,19 +5,34 @@
     <title>Experiment of Forward Error Correction for DNA Data Storage</title>
 
     <link rel="stylesheet" href="./index/css/index.css">
+    <link rel="stylesheet" href="./index/css/convert_button.css">
+
     <script src="./index/js/DNAConvertArithmetic.js"></script>
+    <script src="./index/js/fileOption.js"></script>
     <script src="./index/js/index.js"></script>
 </head>
 <body>
-
     <div class="title">Experiment of Forward Error Correction for DNA Data Storage</div>
     <br>
     <div class="normal_input"><textarea id = "inputText" type="text" placeholder="Please input what string you want to convert"></textarea></div>
     <br>
-    <div class="convert_btn">
-        <button class="button_base" onclick="convertBtnTap(0)" style="background-color: rgb(56, 173, 56);"><span>Convert To DNA Base</span></button>
-        <br>
-        <button class="button_base" onclick="convertBtnTap(1)"><span>Convert To String</span></button>
+    <div class="convert_div">
+        <ul>
+            <li>
+                <button class="convert_button" style="background-color: rgb(56,173,56);"><span>Upload a file</span><br><div style="font-size: 13px">(only support Image or .txt)</div><input id="openNormalFile" style="background-color: #f4511e" type='file' accept='image/*,.txt' onchange='openNormalFile()'></button>
+            </li>
+            <li>
+                <button class="convert_button" onclick="convertBtnTap(0)" style="background-color: rgb(56, 173, 56);"><span>Convert To DNA Base</span></button>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button class="convert_button" onclick="convertBtnTap(1)"><span>Upload a file</span><br><div style="font-size: 13px">(only support .gboke)</div><input id="openGbokeFile" style="background-color: #f4511e" type='file' accept='.gboke' onchange='openGbokeFile()'></button>
+            </li>
+            <li>
+                <button class="convert_button" onclick="convertBtnTap(1)"><span>Convert To String</span></button>
+            </li>
+        </ul>
     </div>
     <br>
     <div class="normal_input"><textarea id = "outputText" type="text" placeholder="Result"></textarea></div>
@@ -29,6 +44,8 @@
     <table id="numberToDecimalismTable"></table>
     <br>
     <div class="bottom"></div>
+
+    <div id="empty_view">Converting. Please wait...</div>
 
 </body>
 
