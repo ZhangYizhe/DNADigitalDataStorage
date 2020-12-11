@@ -10,7 +10,7 @@
 
 1. [About the technology of storage](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/About.md)
 2. [Encoding and decoding method prospect](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/EncodingAndDecodingMethodProspect.md)
-3. [Experiment of Forward Error Correction for DNA Data Storage](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage.md)
+3. [Experiment of Coding for DNA Data Storage](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Experiment of Coding for DNA Data Storage.md)
 4. [DNA digital storage technology Assessment and Judgment](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/DNA%20digital%20storage%20technology%20Assessment%20and%20Judgment/DNA%20digital%20storage%20technology%20Assessment%20and%20Judgment.md)
 
 ##### We developed a tool for converting between DNA base and Essays. You can click [Convert Tool](https://zhangyizhe.github.io/DNADigitalDataStorage/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/ConvertTool/index.html) to use.  We have converted and compressed a file from .mp3 to .gboke(We defined a new file format to recognize and storage our DNA sequences file). [Original file](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/ConvertTool/originalFile.mp3)'s size is 74KB, the [.gboke file](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/ConvertTool/ConvertedFile.gboke)'s size is 594KB. Approximate 593921 bases of DNA.

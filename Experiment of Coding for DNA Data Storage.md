@@ -1,4 +1,4 @@
-# Experiment of Forward Error Correction for DNA Data Storage
+# Experiment of Coding for DNA Data Storage
 
 > According to use JavaScript to complete data convert.
 
@@ -37,3 +37,8 @@ In order to limit the maximum run-length of identical nucleotides to 3 for any p
 
 If you want to try convert function, you can click follow link to use a tool. [Convert Tool](https://zhangyizhe.github.io/DNADigitalDataStorage/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/ConvertTool/index.html)
 
+
+
+# Reference
+
+- [Forward Error Correction for DNA Data Storage](https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/Forward%20Error%20Correction%20for%20DNA%20Data%20Storage.pdf)
