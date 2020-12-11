@@ -30,7 +30,17 @@ function openGbokeFile() {
         }
 
         var fileType = fileTypeMarch[0].replace("/", "").replace(";", "");
-        fileType = (fileType === "plain") ? ".txt" : "." + fileType;
+        switch (fileType) {
+            case "plain":
+                fileType = ".txt";
+                break;
+            case "mpeg":
+                fileType = ".mp3";
+                break;
+            default:
+                fileType = "." + fileType;
+                break;
+        }
         downloadFileFromURI(resultString, myDate.getFullYear() + "-" + myDate.getMonth() + "-" + myDate.getDate() + " " + myDate.getHours() + "-" + myDate.getMinutes() + "-" + myDate.getSeconds() + fileType);
     }, false);
 
