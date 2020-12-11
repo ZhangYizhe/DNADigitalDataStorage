@@ -35,5 +35,5 @@ In order to limit the maximum run-length of identical nucleotides to 3 for any p
 
 
 
-If you want to try convert function, you can click follow link to use a tool. [Convert Tool](http://htmlpreview.github.io/?https://github.com/ZhangYizhe/DNADigitalDataStorage/blob/main/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/ConvertTool/index.html)
+If you want to try convert function, you can click follow link to use a tool. [Convert Tool](https://zhangyizhe.github.io/DNADigitalDataStorage/Reference/Experiment%20of%20Forward%20Error%20Correction%20for%20DNA%20Data%20Storage/ConvertTool/index.html)
 
